@@ -9,7 +9,7 @@ fun main(args : Array<String>)
 {
     val options = VertxOptions();
     options.setEventLoopPoolSize(4);
-    //options.setWorkerPoolSize(16);
+    options.setWorkerPoolSize(16);
     val vertx = Vertx.vertx(options);
     val httpOptions = HttpServerOptions();
     httpOptions.maxHeaderSize = 16 * 1024;
@@ -33,6 +33,7 @@ fun main(args : Array<String>)
 //        Thread.sleep(500 * 1000);
     /*
     经过调试看出，此线程在执行完毕之后就自动退出了。
-    vertx 默认只启动一个apecct 和 一个eventloop的处理线程，其他几个是请求过来了动态创建的。
+    vertx 默认只启动一个acceotor ,一个eventloop线程还有一个blocked-checker线程，其他几个eventloop和work线程都是按需创建的。
+
     * */
 }
