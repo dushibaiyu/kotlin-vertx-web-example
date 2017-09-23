@@ -8,6 +8,8 @@ fun showIndex(context : RoutingContext)
 {
     val a = currentThread()
     println(a.id)
+    val req = context.request();
+    println(req.path());
     val rep = context.response();
     rep.statusCode = 200;
     rep.end("hello world!")
