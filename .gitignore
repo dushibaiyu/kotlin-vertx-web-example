@@ -3,3 +3,4 @@
 /out
 .idea
 .vertx
+/.nb-gradle/

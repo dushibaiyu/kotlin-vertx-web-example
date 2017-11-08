@@ -11,7 +11,8 @@ fun main(args : Array<String>)
     options.setEventLoopPoolSize(4);
     options.setWorkerPoolSize(16);
     val vertx = Vertx.vertx(options);
-    val httpOptions = HttpServerOptions();
+    val httpOptions = HttpServerOptions()
+            .setReuseAddress(true).setReusePort(true);
     httpOptions.maxHeaderSize = 16 * 1024;
     val router = buildRouter(vertx);
 
